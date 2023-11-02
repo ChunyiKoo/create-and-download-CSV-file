@@ -1,0 +1,67 @@
+<html>
+
+<body>
+  <h3>Creating and downloading the CSV file from the given data in JavaScript</h3>
+  <div id="data"> </div>
+  <button onclick="downloadFile()"> Download CSV file </button>
+  <script>
+    let laptops = [{
+      brand: 'HP',
+      processor: 'i3',
+      price: 30000,
+      ram: 4
+    },
+    {
+      brand: 'Dell',
+      processor: 'i5',
+      price: 50000,
+      ram: 8
+    },
+    {
+      brand: 'Apple',
+      processor: 'i7',
+      price: 70000,
+      ram: 16
+    },
+    {
+      brand: 'Lenovo',
+      processor: 'i3',
+      price: 35000,
+      ram: 4
+    },
+    {
+      brand: 'Asus',
+      processor: 'i5',
+      price: 45000,
+      ram: 8
+    },
+    {
+      brand: 'Acer',
+      processor: 'i7',
+      price: 65000,
+      ram: 16
+    }
+    ];
+
+    // Function to download data to a CSV file
+    function downloadFile() {
+
+      // Add header
+      let csvData = 'Brand, Processor, Price, RAM';
+
+      // Add data
+      laptops.forEach(function (row) {
+        csvData += row.brand + ',' + row.processor + ',' + row.price + ',' + row.ram + '';
+      });
+
+      // Download the CSV file
+      let anchor = document.createElement('a');
+      anchor.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvData);
+      anchor.target = '_blank';
+      anchor.download = 'laptops.csv';
+      anchor.click();
+    }
+  </script>
+</body>
+
+</html>
