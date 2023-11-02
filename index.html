@@ -5,7 +5,7 @@
   <div id="data"> </div>
   <button onclick="downloadFile()"> Download CSV file </button>
   <script>
-    let laptops = [{
+    let laptops_data = [{
       brand: 'HP',
       processor: 'i3',
       price: 30000,
@@ -47,18 +47,18 @@
     function downloadFile() {
 
       // Add header
-      let csvData = 'Brand, Processor, Price, RAM';
+      let csvData = 'Brand, Processor, Price, RAM\n';
 
       // Add data
-      laptops.forEach(function (row) {
-        csvData += row.brand + ',' + row.processor + ',' + row.price + ',' + row.ram + '';
+      Object.values(laptops_data).forEach(function (row) {
+        csvData += row.brand + ',' + row.processor + ',' + row.price + ',' + row.ram + '\n';
       });
 
       // Download the CSV file
       let anchor = document.createElement('a');
       anchor.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvData);
       anchor.target = '_blank';
-      anchor.download = 'laptops.csv';
+      anchor.download = 'laptops_test.csv';
       anchor.click();
     }
   </script>
